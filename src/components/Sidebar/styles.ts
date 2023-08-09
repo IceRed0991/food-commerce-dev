@@ -13,4 +13,16 @@ export const Container = styled.aside`
   flex-direction: column;
   align-items: center;
 
+
+  button{
+    background: none;
+    width: 100%;
+    border: none;
+  }
+
+  nav{
+    flex:1;
+    width: 100%;
+    height:100%;
+  }
 `
