@@ -1,21 +1,12 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import { Head } from "../../../components/Head";
 import { SnackTitle } from "../../../components/SnackTitle";
 import Snacks from "../../../components/Snacks";
-import { getIceCreams } from "../../../services/api";
-import { SnackData } from "../../../intarfaces/SnackData";
+import { SnackContext } from "../../../contexts/SnackContext";
 
 
 export default function IceCreams() {
-  const [iceCreams, setIceCreams] = useState<SnackData[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const iceCreamsRequest = await getIceCreams()
-
-      setIceCreams(iceCreamsRequest.data)
-    })()
-  }, [])
+  const { iceCreams } = useContext(SnackContext);
 
   return (
 
