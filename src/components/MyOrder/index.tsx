@@ -6,6 +6,7 @@ import { ReactComponent as CartIcon } from '../../assets/shopping-cart.svg'
 
 export function MyOrder() {
   const { cart } = useCart()
+
   return (
     <Container to={'cart'}>
       <span>Meu Pedido</span>

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { darken } from "polished";
-import { theme } from "../../styles/Theme";
 
 export const Container = styled(Link)`
   position: absolute;
