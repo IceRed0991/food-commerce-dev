@@ -5,7 +5,7 @@ interface HeadProps {
 
 export function Head({ title, description = '' }: HeadProps) {
 
-  document.title = `Food commece | ${title}`,
+  document.title = `Food commerce | ${title}`,
     document.querySelector('[name=description]')?.setAttribute('content', description)
 
   return null;

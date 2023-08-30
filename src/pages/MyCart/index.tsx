@@ -1,10 +1,16 @@
+import { Head } from '../../components/Head'
+import { OrderHeader } from '../../components/OrderHeader'
+import { Table } from './Table'
 import { Container } from './styles'
 
 export default function MyCart() {
 
   return (
     <Container>
-      <h1>My Cart</h1>
+      <Head title='Carrinho' />
+      <OrderHeader />
+      <Table />
+
     </Container>
   )
 }
