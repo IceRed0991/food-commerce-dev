@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
-import { SnackData } from '../intarfaces/SnackData'
+import { SnackData } from '../interfaces/SnackData'
 import { getBurguers, getPizzas, getDrinks, getIceCreams } from '../services/api'
 
 
