@@ -86,9 +86,7 @@ border-radius: 8px;
         width: 1.5rem;
         padding-right:0;
 
-
-        /* Ação deletar*/
-        /* button{
+         button{
           background: none;
           border: none;
           width: 100%;
@@ -102,7 +100,7 @@ border-radius: 8px;
             width: 1.5rem;
             height:1.5rem;
           }
-        } */
+        }
       }
     }
   }
