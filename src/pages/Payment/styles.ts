@@ -14,6 +14,8 @@ background: ${({ theme }) => theme.colors.black};
 padding: 2rem 2.5rem;
 border-radius: 8px;
 `
+
+
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
