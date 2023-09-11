@@ -28,4 +28,44 @@ export const Form = styled.form`
     }
   }
 
+  .grouped{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: auto;
+  }
+  .field{
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
+
+  label{
+    display: block;
+    color: ${({ theme }) => theme.colors.white};
+    margin-bottom: 0.5rem;
+  }
+
+  input[type='email'],
+  input[type='number'],
+  input[type='tel'],
+  input[type='text'],select{
+    flex-grow: 1;
+    background-color: ${({ theme }) => theme.colors.gray800};
+    color: ${({ theme }) => theme.colors.white};
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: all 0.2s;
+    height: 42px;
+    width: 100%;
+    margin: 0 0 1rem;
+    padding: 0.7rem;
+  }
+
+  @media (max-width: 540px){
+    .grouped{
+      flex-direction: column;
+    }
+  }
+
 `
