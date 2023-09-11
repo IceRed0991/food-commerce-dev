@@ -9,6 +9,7 @@ import { OrderHeader } from '../../components/OrderHeader'
 
 import { Container, Form, Inner } from './styles'
 
+
 const schema = yup
   .object({
     fullName: yup
@@ -25,7 +26,6 @@ type FieldValues = yup.InferType<typeof schema>
 export default function Payment() {
   const {
     control,
-    register,
     handleSubmit,
     formState: { errors },
   } = useForm<FieldValues>({
