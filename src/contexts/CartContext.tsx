@@ -1,7 +1,8 @@
 import { createContext, ReactNode, useState } from 'react'
-import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
+import { CustomerData } from '../interfaces/CustomerData'
 import { SnackData } from '../interfaces/SnackData'
 
 import { snackEmoji } from '../helpers/snackEmoji'
@@ -18,7 +19,7 @@ interface CartContextProps {
   snackCartIncrement: (snack: Snack) => void
   snackCartDecrement: (snack: Snack) => void
   confirmOrder: () => void
-  payOrder: () => void
+  payOrder: (customer: CustomerData) => void
 }
 
 interface CartProviderProps {
@@ -29,7 +30,6 @@ export const CartContext = createContext({} as CartContextProps)
 
 export function CartProvider({ children }: CartProviderProps) {
   const navigate = useNavigate()
-
   const [cart, setCart] = useState<Snack[]>([])
 
   function addSnackIntoCart(snack: SnackData): void {
@@ -64,13 +64,16 @@ export function CartProvider({ children }: CartProviderProps) {
 
   function removeSnackFromCart(snack: Snack) {
     const newCart = cart.filter((item) => !(item.id === snack.id && item.snack === snack.snack))
-    setCart(newCart);
+
+    setCart(newCart)
   }
 
   function updateSnackQuantity(snack: Snack, newQuantity: number) {
     if (newQuantity <= 0) return
 
-    const snackExistentInCart = cart.find((item) => item.id === snack.id && item.snack === snack.snack)
+    const snackExistentInCart = cart.find(
+      (item) => item.id === snack.id && item.snack === snack.snack,
+    )
 
     if (!snackExistentInCart) return
 
@@ -82,11 +85,12 @@ export function CartProvider({ children }: CartProviderProps) {
           subtotal: item.price * newQuantity,
         }
       }
+
       return item
     })
+
     setCart(newCart)
   }
-
 
   function snackCartIncrement(snack: Snack) {
     updateSnackQuantity(snack, snack.quantity + 1)
@@ -96,10 +100,16 @@ export function CartProvider({ children }: CartProviderProps) {
     updateSnackQuantity(snack, snack.quantity - 1)
   }
 
-  function confirmOrder() { navigate('/payment') }
+  function confirmOrder() {
+    navigate('/payment')
+  }
 
-  function payOrder() { return }
+  function payOrder(customer: CustomerData) {
+    console.log('payOrder', cart, customer)
+    // chamada de API para o backend
 
+    return
+  }
 
   return (
     <CartContext.Provider
