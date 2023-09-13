@@ -12,6 +12,7 @@
     "@types/node": "^16.18.40",
     "@types/react": "^18.2.19",
     "@types/react-dom": "^18.2.7",
+    "@types/react-input-mask": "^3.0.2",
     "axios": "^0.27.2",
     "card-validator": "^8.1.1",
     "input-mask-react": "^1.0.7",
