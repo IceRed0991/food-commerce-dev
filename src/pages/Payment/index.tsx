@@ -88,10 +88,12 @@ export default function Payment() {
                   <IMaskInput
                     type='text'
                     id='document'
+
                     mask={[
-                      { mask: '000.000.000-00', maxLength: 11 },
+                      { mask: '000.000.000-00' },
                       { mask: '00.000.000/0000-00' },
                     ]}
+
                     {...field}
                   />
                 )}
@@ -99,6 +101,7 @@ export default function Payment() {
               {errors.document && <p className='error'>{errors.document.message}</p>}
             </div>
           </div>
+
 
           <h4>Endereço de entrega</h4>
 
@@ -229,11 +232,9 @@ export default function Payment() {
                   mask={[
                     {
                       mask: '0000 000000 0000',
-                      maxLength: 14,
                     },
                     {
                       mask: '0000 000000 00000',
-                      maxLength: 15,
                     },
                     {
                       mask: '0000 0000 0000 0000',
@@ -270,16 +271,16 @@ export default function Payment() {
                       {
                         mask: 'MM/YY',
                         blocks: {
-                          MM: {
-                            mask: IMask.MaskedRange,
-                            from: 1,
-                            to: 12,
-                          },
-                          YY: {
-                            mask: IMask.MaskedRange,
-                            from: new Date().getFullYear() - 2000,
-                            to: 99,
-                          },
+                          //   MM: {
+                          //     mask: IMask.MaskedRange,
+                          //     min: 1,
+                          //     max: 12,
+                          //   },
+                          //   YY: {
+                          //     mask: IMask.MaskedRange,
+                          //     from: new Date().getFullYear() - 2000,
+                          //     to: 99,
+                          //   },
                         },
                       },
                     ]}
@@ -309,6 +310,6 @@ export default function Payment() {
           <PayOrder />
         </Form>
       </Inner>
-    </Container>
+    </Container >
   )
 }
