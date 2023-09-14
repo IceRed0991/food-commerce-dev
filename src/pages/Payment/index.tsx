@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
-import IMask from 'imask'
+// import IMask from 'imask'
 import { IMaskInput } from 'react-imask'
 
 import { CustomerData } from '../../interfaces/CustomerData'
@@ -271,16 +271,14 @@ export default function Payment() {
                       {
                         mask: 'MM/YY',
                         blocks: {
-                          //   MM: {
-                          //     mask: IMask.MaskedRange,
-                          //     min: 1,
-                          //     max: 12,
-                          //   },
-                          //   YY: {
-                          //     mask: IMask.MaskedRange,
-                          //     from: new Date().getFullYear() - 2000,
-                          //     to: 99,
-                          //   },
+                          MM: {
+                            //   min: 1,
+                            //   max: 12,
+                          },
+                          // YY: {
+                          //   min: new Date().getFullYear() - 2000,
+                          //   max: 99,
+                          // },
                         },
                       },
                     ]}
