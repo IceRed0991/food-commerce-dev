@@ -1,7 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-
-// import IMask from 'imask'
 import { IMaskInput } from 'react-imask'
 
 import { CustomerData } from '../../interfaces/CustomerData'
@@ -16,6 +14,7 @@ import { FieldValues, schema } from './validationSchema'
 
 
 import { Container, Form, Inner } from './styles'
+
 
 export default function Payment() {
   const { payOrder } = useCart()
@@ -268,17 +267,26 @@ export default function Payment() {
                     type='text'
                     id='creditCardExpiration'
                     mask={[
+
                       {
                         mask: 'MM/YY',
+
                         blocks: {
-                          MM: {
-                            //   min: 1,
-                            //   max: 12,
+                          'MM': {
+                            mask: Number,
+                            min: 1,
+                            max: 12,
                           },
-                          // YY: {
-                          //   min: new Date().getFullYear() - 2000,
-                          //   max: 99,
-                          // },
+
+                          'YY': {
+                            lazy: true,
+                            autofix: false,
+                            mask: Number,
+
+                            min: (new Date().getFullYear() - 2000),
+                            max: 99,
+                          },
+
                         },
                       },
                     ]}
