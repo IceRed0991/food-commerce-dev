@@ -50,13 +50,13 @@ export const schema = yup
       .matches(/(\w.+\s).+/gi, 'O nome do titular deve conter o sobrenome.'),
     creditCardExpiration: yup
       .string()
+
       .required('A data de validate é obrigatória.')
       .transform((value) => {
         const [month, year] = value.split('/')
 
         if (month && year && month.length === 2 && year.length === 2)
           return new Date(+`20${year}`, +month - 1, 1).toISOString()
-
         return value
       })
       .test(

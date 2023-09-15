@@ -24,10 +24,12 @@ export default function Payment() {
     formState: { errors },
   } = useForm<FieldValues>({
     resolver: yupResolver(schema),
+
   })
   const onSubmit: SubmitHandler<FieldValues> = (data) => payOrder(data as CustomerData)
 
   return (
+
     <Container>
       <Head title='Pagamento' />
       <OrderHeader />
@@ -37,10 +39,13 @@ export default function Payment() {
 
           <div className='field'>
             <label htmlFor='fullName'>Nome e sobrenome</label>
+
             <Controller
               name='fullName'
+
               control={control}
               render={({ field }) => (
+                focus(),
                 <input type='text' id='fullName' autoComplete='name' {...field} />
               )}
             />
@@ -266,37 +271,36 @@ export default function Payment() {
                   <IMaskInput
                     type='text'
                     id='creditCardExpiration'
-                    mask={[
 
-                      {
-                        mask: 'MM/YY',
 
-                        blocks: {
-                          'MM': {
-                            mask: Number,
-                            min: 1,
-                            max: 12,
+
+                    mask={
+                      [
+                        {
+                          mask: 'MM/YY',
+                          blocks: {
+                            'MM': {
+                              mask: Number,
+
+                              min: 1,
+                              max: 12,
+                            },
+
+                            'YY': {
+                              mask: Number,
+                              min: (new Date().getFullYear() - 2000),
+                              max: 99,
+
+                            },
+
                           },
-
-                          'YY': {
-                            lazy: true,
-                            autofix: false,
-                            mask: Number,
-
-                            min: (new Date().getFullYear() - 2000),
-                            max: 99,
-                          },
-
                         },
-                      },
-                    ]}
+                      ]}
                     {...field}
                   />
                 )}
               />
-              {errors.creditCardExpiration && (
-                <p className='error'>{errors.creditCardExpiration.message}</p>
-              )}
+              {errors.creditCardExpiration && (<p className='error'>{errors.creditCardExpiration.message}</p>)}
             </div>
 
             <div className='field'>
