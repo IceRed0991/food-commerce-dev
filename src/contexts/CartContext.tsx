@@ -6,11 +6,8 @@ import { CustomerData } from '../interfaces/CustomerData'
 import { SnackData } from '../interfaces/SnackData'
 
 import { snackEmoji } from '../helpers/snackEmoji'
-
-interface Snack extends SnackData {
-  quantity: number
-  subtotal: number
-}
+import { Snack } from '../interfaces/Snack'
+import { processCheckout } from '../services/api'
 
 interface CartContextProps {
   cart: Snack[]
@@ -119,10 +116,28 @@ export function CartProvider({ children }: CartProviderProps) {
     navigate('/payment')
   }
 
-  function payOrder(customer: CustomerData) {
-    console.log('payOrder', cart, customer)
-    clearCart()// deve ser executado após positivo da API Pagamento.
-    // chamada de API para o backend
+  async function payOrder(customer: CustomerData) {
+    //console.log('payOrder', cart, customer)
+
+    try {
+      const response = await processCheckout(cart, customer)
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      if (response.data.status !== "PAID") {
+        toast.error('Erro ao processador o pagamento, por favor, tente novamente mais tarde.')
+        return
+      }
+
+      clearCart()// deve ser executado após positivo da API Pagamento.
+      // chamada de API para o backend
+      navigate(`/order/success/${response.data.id}`)
+    } catch (error) {
+      console.error(error)
+      toast.error('Erro ao processar o pedido')
+
+    }
+
+
+
 
     return
   }

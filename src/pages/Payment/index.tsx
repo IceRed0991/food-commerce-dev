@@ -59,6 +59,7 @@ export default function Payment() {
                 name='email'
                 control={control}
                 render={({ field }) => (
+                  focus(),
                   <input type='email' id='email' autoComplete='email' {...field} />
                 )}
               />
@@ -71,6 +72,7 @@ export default function Payment() {
                 name='mobile'
                 control={control}
                 render={({ field }) => (
+                  focus(),
                   <IMaskInput
                     type='tel'
                     id='mobile'
@@ -89,6 +91,7 @@ export default function Payment() {
                 name='document'
                 control={control}
                 render={({ field }) => (
+                  focus(),
                   <IMaskInput
                     type='text'
                     id='document'
@@ -115,6 +118,7 @@ export default function Payment() {
               name='zipCode'
               control={control}
               render={({ field }) => (
+                focus(),
                 <IMaskInput
                   type='text'
                   id='zipCode'
@@ -230,6 +234,7 @@ export default function Payment() {
               name='creditCardNumber'
               control={control}
               render={({ field }) => (
+                focus(),
                 <IMaskInput
                   type='text'
                   id='creditCardNumber'
@@ -268,6 +273,7 @@ export default function Payment() {
                 name='creditCardExpiration'
                 control={control}
                 render={({ field }) => (
+                  focus(),
                   <IMaskInput
                     type='text'
                     id='creditCardExpiration'
@@ -309,6 +315,7 @@ export default function Payment() {
                 name='creditCardSecurityCode'
                 control={control}
                 render={({ field }) => (
+                  focus(),
                   <IMaskInput type='text' id='creditCardSecurityCode' mask={'0000'} {...field} />
                 )}
               />
